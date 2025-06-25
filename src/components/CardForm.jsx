@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './styles/CardForm.css'
 
 const kCardFormData = {
   message: '',
@@ -27,10 +28,10 @@ const CardForm = () => {
   }
 
   return (
-    <form onSubmit={submitCardData}>
-      <section>
-        <h2>Add a New Card</h2>
-        <div>
+    <section>
+      <h2 className='form-title'>Add a New Card</h2>
+      <form onSubmit={submitCardData}>
+        <div className='form-inputs'>
           <label htmlFor="cardMessage">Message: </label>
           <input
             onChange={handleCardFormChange}
@@ -39,8 +40,6 @@ const CardForm = () => {
             id="cardMessage"
             value={cardFormData.message}
           />
-        </div>
-        <div>
           <label htmlFor="cardColor">Card color: </label>
           <input
             onChange={handleCardFormChange}
@@ -49,18 +48,18 @@ const CardForm = () => {
             id="cardColor"
             value={cardFormData.color}
           />
-        </div>
-        <div>
-          <p>Preview: </p>
-          <div style={{ backgroundColor: cardFormData.color }}>
-            <p>{cardFormData.message}</p>
+          <div className='cardForm-preview'>
+            <p>Preview: </p>
+            <div className='cardForm-preview__card' style={{ backgroundColor: cardFormData.color }}>
+              <p>{cardFormData.message}</p>
+            </div>
           </div>
         </div>
         <div>
-          <button type="submit">Add Card</button>
+          <button className='form-submit__button' type="submit">Add Card</button>
         </div>
-      </section>
-    </form>
+      </form>
+    </section>
   )
 }
 
