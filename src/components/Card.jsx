@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import './Card.css'
 
-const Card = ({cardMessage, likesCounter}) => {
+const Card = ({cardMessage, likesCounter, cardColor}) => {
 	return (
-		<div className="card-item">
+		<div className="card-item" style={{"--card-bg": cardColor}}>
 			<p className="card-item__message">{cardMessage}</p>
 			<div className="card-item__controls">
 				<button>Like</button>
@@ -17,6 +17,7 @@ const Card = ({cardMessage, likesCounter}) => {
 Card.propTypes = {
 	cardMessage: PropTypes.string.isRequired,
 	likesCounter: PropTypes.number.isRequired,
+	cardColor: PropTypes.string.isRequired,
 }
 
 export default Card;
