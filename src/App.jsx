@@ -5,9 +5,10 @@ import './App.css';
 
 function App() {
   const boards = [
-    { id: 1, title: "Fun board"},
-    { id: 2, title: "Happy board"},
-    { id: 3, title: "Work board"}
+    { id: 1, title: "Fun board", owner: "Collette"},
+    { id: 2, title: "Happy board", owner: "Lina"},
+    { id: 3, title: "Work board", owner: "Natasha"}
+    { id: 3, title: "Outside board", owner: "Jane"}
   ];
   
   const [selectedBoard, updateSelectedBoard] = useState(null);

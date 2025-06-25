@@ -8,6 +8,7 @@ const Board = ({ board }) => {
   return (
     <div className="board">
       <h1 className="board__title">{board.title}</h1>
+      <p className="board__owner">Owner: {board.owner}</p>
       <div className="board__cards-container">
         {/* Cardlist */}
         <Card cardMessage={'Hello'} likesCounter={10} />
@@ -21,6 +22,7 @@ Board.propTypes = {
   board: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
   }).isRequired,
 };
 
