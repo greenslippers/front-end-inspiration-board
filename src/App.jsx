@@ -1,15 +1,37 @@
-import { useState } from 'react'
-import './App.css'
-import Card from './components/Card'
+import { useState } from 'react';
+import BoardList from './components/BoardList';
+import Board from './components/Board';
+import './App.css';
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const boards = [
+    { id: 1, title: "Fun board"},
+    { id: 2, title: "Happy board"},
+    { id: 3, title: "Work board"}
+  ];
+  
+  const [selectedBoard, setSelectedBoard] = useState(null);
+
+  const handleSelectBoard = (board) => {
+    setSelectedBoard(board);
+  };
 
   return (
-    <>
-      <Card cardMessage={'Hello'} likesCounter={10} />
+    <div className="app">
+      <h1 className="app__title">Devspiration Boards</h1>
+      <BoardList 
+        boards={boards}
+        onSelectBoard={handleSelectBoard}
+      />
+      {selectedBoard && (
+        <Board 
+          board={selectedBoard}
+        />
+      )}
+      <>
     </>
-  )
+    </div>
+  );
 }
 
 export default App
