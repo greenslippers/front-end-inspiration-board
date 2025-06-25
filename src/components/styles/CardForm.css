@@ -1,0 +1,12 @@
+.cardForm-preview__card {
+  width: 8em;
+  height: 8em;
+  text-align: center;
+  padding: 1.5em;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+.cardForm-preview__card p {
+  margin-top: 0;
+}
