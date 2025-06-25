@@ -5,7 +5,7 @@ const kCardFormData = {
   color: '#fff8a5',
 };
 
-const NewCardForm = () => {
+const CardForm = () => {
   const [cardFormData, setCardFormData] = useState(kCardFormData)
 
   const submitCardData = (event) => {
@@ -64,4 +64,4 @@ const NewCardForm = () => {
   )
 }
 
-export default NewCardForm;
+export default CardForm;
