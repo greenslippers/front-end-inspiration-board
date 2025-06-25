@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Card from './Card';
-import './Board.css';
+import './styles/Board.css';
 
 const Board = ({ board }) => {
   const cards = [];

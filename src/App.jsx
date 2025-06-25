@@ -10,10 +10,10 @@ function App() {
     { id: 3, title: "Work board"}
   ];
   
-  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [selectedBoard, updateSelectedBoard] = useState(null);
 
   const handleSelectBoard = (board) => {
-    setSelectedBoard(board);
+    updateSelectedBoard(board);
   };
 
   return (
