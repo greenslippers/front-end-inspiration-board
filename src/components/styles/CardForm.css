@@ -1,3 +1,7 @@
+.cardForm-preview__label {
+  font-weight: bold;
+}
+
 .cardForm-preview__card {
   width: 8em;
   height: 8em;
@@ -9,4 +13,13 @@
 
 .cardForm-preview__card p {
   margin-top: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+#cardColor {
+  width: 3rem;
+  height: 2rem;
+  cursor: pointer;
+  padding: 0.12rem;
 }
