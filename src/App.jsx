@@ -13,6 +13,7 @@ function App() {
   ]);
   
   const [selectedBoard, updateSelectedBoard] = useState(null);
+  
 
   const handleSelectBoard = (board) => {
     updateSelectedBoard(board);
@@ -40,9 +41,10 @@ function App() {
         />
       </div>
       {selectedBoard && (
-        <Board 
+        <Board
           board={selectedBoard}
-        />
+          cards={selectedBoardCards}
+          />
       )}
     </div>
   );
