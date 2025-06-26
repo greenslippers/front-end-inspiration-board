@@ -1,19 +1,53 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import BoardList from './components/BoardList';
 import BoardForm from './components/BoardForm';
 import Board from './components/Board';
 import './App.css';
 
+const kBaseUrl = import.meta.env.VITE_APP_BACKEND_URL;
+
+const selectedBoardCards = [
+  {
+    id: 1,
+    message: 'Hola',
+    likesCount: 10,
+  }
+]
+
+const getBoardsApi = () => {
+  return axios.get(kBaseUrl)
+    .then(response => {
+      console.log(response.data)
+      return response.data
+    })
+    .catch(error => {
+      console.log(error);
+      return [];
+    });
+};
+
 function App() {
-  const [boards, setBoards] = useState([
-    { id: 1, title: "Fun board", owner: "Collette"},
-    { id: 2, title: "Happy board", owner: "Lina"},
-    { id: 3, title: "Work board", owner: "Natasha"},
-    { id: 4, title: "Outside board", owner: "Jane"}
-  ]);
-  
+  const [boards, setBoards] = useState([]);
   const [selectedBoard, updateSelectedBoard] = useState(null);
-  
+
+
+  const getAllBoards = () => {
+    return getBoardsApi()
+    .then(response => {
+      console.log(response)
+      setBoards(response)
+    });
+  };
+
+  useEffect(() => {
+    getAllBoards();
+  }, []);
+
+  useEffect(() => {
+  console.log("Boards in App:", boards);
+}, [boards]);
+    
 
   const handleSelectBoard = (board) => {
     updateSelectedBoard(board);
