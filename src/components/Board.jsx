@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import CardList from './CardList';
 import CardForm from './CardForm';
 import FormPopUp from './FormPopUp';
 import './styles/Board.css';
 
-const cards = [];
-
-const Board = ({ board }) => {
+const Board = ({ board, cards }) => {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
   return (
@@ -19,9 +18,7 @@ const Board = ({ board }) => {
         <CardForm/>
       </FormPopUp>
       <div className="board__cards-container">
-        {/* Cardlist */}
-        <Card cardMessage={'Hello'} likesCounter={10} />
-        {/* Cardlist */}
+        <CardList cards={cards}/>
       </div>
     </div>
   );
