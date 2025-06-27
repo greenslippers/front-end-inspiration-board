@@ -107,7 +107,12 @@ function App() {
 
   const handleCreateBoard = (boardData) => {
     createBoardApi(boardData)
-      .then(() => getAllBoards());
+      .then(newBoard => {
+        if (newBoard) {
+          updateSelectedBoard(newBoard);
+        }
+        return getAllBoards();
+      });
   };
 
   return (
