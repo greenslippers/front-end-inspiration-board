@@ -46,6 +46,12 @@ const patchLikeCounterAPI = (cardId) => {
   .catch( error => console.error(error))
 };
 
+const createBoardApi = (newBoardData) => {
+  return axios.post(`${kBaseUrl}/boards`, newBoardData)
+    .then(response => response.data)
+    .catch(error => console.error(error));
+};
+
 const convertCardFromApi = ((apiCard) => {
   if (!apiCard) return;
   const { board_id, card_color, card_id, likes_count, message } = apiCard;
@@ -118,12 +124,13 @@ function App() {
   };
 
   const handleCreateBoard = (boardData) => {
-    const newBoard = {
-      id: boards.length + 1,
-      title: boardData.title,
-      owner: boardData.owner
-    };
-    setBoards(prevBoards => [...prevBoards, newBoard]);
+    createBoardApi(boardData)
+      .then(newBoard => {
+        if (newBoard) {
+          updateSelectedBoard(newBoard);
+        }
+        return getAllBoards();
+      });
   };
 
   return (
@@ -151,4 +158,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
