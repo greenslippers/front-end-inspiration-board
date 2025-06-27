@@ -8,7 +8,7 @@ import './App.css';
 const kBaseUrl = import.meta.env.VITE_APP_BACKEND_URL;
 
 const getBoardsApi = () => {
-  return axios.get(kBaseUrl)
+  return axios.get(`${kBaseUrl}/boards`)
     .then(response => {
       return response.data
     })
@@ -19,7 +19,7 @@ const getBoardsApi = () => {
 };
 
 const getCardsApi = (boardId) => {
-  return axios.get(`${kBaseUrl}/${boardId}/cards`)
+  return axios.get(`${kBaseUrl}/boards/${boardId}/cards`)
     .then(response => {
       return response.data.map(convertCardFromApi);
     })
@@ -30,10 +30,15 @@ const getCardsApi = (boardId) => {
 }
 
 const createCardApi =  (boardId, newCardData) => {
-  return axios.post(`${kBaseUrl}/${boardId}/cards`, newCardData)
+  return axios.post(`${kBaseUrl}/boards/${boardId}/cards`, newCardData)
   .then(response => convertCardFromApi(response.data[0]))
   .catch(error => console.error(error));
 }
+
+const deleteCardApi = (cardId) => {
+  return axios.delete(`${kBaseUrl}/cards/${cardId}`)
+  .catch(error => console.error(error));
+};
 
 const convertCardFromApi = ((apiCard) => {
   if (!apiCard) return;
@@ -80,6 +85,15 @@ function App() {
     //   }
     // });
   };
+
+  const deleteCard = (cardId) => {
+    return deleteCardApi(cardId)
+    .then(()=> {
+      setCards(cards => cards.filter(card => {
+        return card.id !== cardId
+      }))
+    })
+  }
     
   const handleSelectBoard = (board) => {
     updateSelectedBoard(board);
@@ -111,6 +125,7 @@ function App() {
           board={selectedBoard}
           cards={cards}
           onCreateCard={createCard}
+          onCardDelete={deleteCard}
         />
       )}
     </div>

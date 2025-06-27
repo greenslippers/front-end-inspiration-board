@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardList = ({cards}) => {
+const CardList = ({cards, onCardDelete}) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
@@ -10,6 +10,7 @@ const CardList = ({cards}) => {
         cardMessage = {card.message}
         likesCounter= {card.likesCount}
         cardColor={card.cardColor}
+        onCardDelete={onCardDelete}
       />
     );
   });
@@ -25,7 +26,8 @@ CardList.propTypes = {
       likesCount: PropTypes.number.isRequired,
       cardColor: PropTypes.string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
+  onCardDelete: PropTypes.func.isRequired,
 }
 
 export default CardList;
