@@ -66,7 +66,7 @@ function App() {
   const [cards, setCards] = useState([]);
 
 
-  const getAllBoards = () => {
+  const handleGetAllBoards = () => {
     return getBoardsApi()
     .then(response => {
       setBoards(response)
@@ -74,26 +74,26 @@ function App() {
   };
 
   useEffect(() => {
-    getAllBoards();
+    handleGetAllBoards();
   }, []);
 
-  const getAllCards = (boardId) => {
+  const handleGetAllCards = (boardId) => {
     return getCardsApi(boardId)
       .then(response => setCards(response))
   }
 
   useEffect(() => {
     if (selectedBoard) {
-      getAllCards(selectedBoard.id);
+      handleGetAllCards(selectedBoard.id);
     }
   }, [selectedBoard]);
 
-  const createCard = (boardId, newCardData) => {
+  const handleCreateCard = (boardId, newCardData) => {
     createCardApi(boardId, newCardData)
-    .then(()=> getAllCards(boardId))
+    .then(()=> handleGetAllCards(boardId))
   };
 
-  const deleteCard = (cardId) => {
+  const handleDeleteCard = (cardId) => {
     return deleteCardApi(cardId)
     .then(()=> {
       setCards(cards => cards.filter(card => {
@@ -124,7 +124,7 @@ function App() {
         if (newBoard) {
           updateSelectedBoard(newBoard);
         }
-        return getAllBoards();
+        return handleGetAllBoards();
       });
   };
 
@@ -144,8 +144,8 @@ function App() {
         <Board
           board={selectedBoard}
           cards={cards}
-          onCreateCard={createCard}
-          onDeleteCard={deleteCard}
+          onCreateCard={handleCreateCard}
+          onDeleteCard={handleDeleteCard}
           onLikeCard={handleLikeCard}
         />
       )}
