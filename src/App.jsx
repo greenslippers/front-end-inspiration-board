@@ -31,13 +31,19 @@ const getCardsApi = (boardId) => {
 
 const createCardApi =  (boardId, newCardData) => {
   return axios.post(`${kBaseUrl}/boards/${boardId}/cards`, newCardData)
-  .then(response => convertCardFromApi(response.data[0]))
+  .then(response => convertCardFromApi(response.data[0]))git 
   .catch(error => console.error(error));
 }
 
 const deleteCardApi = (cardId) => {
   return axios.delete(`${kBaseUrl}/cards/${cardId}`)
   .catch(error => console.error(error));
+};
+
+const patchLikeCounterAPI = (cardId) => {
+  return axios.patch(`${kBaseUrl}/cards/${cardId}/like`)
+  .then(response => convertCardFromApi(response.data))
+  .catch( error => console.error(error))
 };
 
 const convertCardFromApi = ((apiCard) => {
@@ -94,6 +100,18 @@ function App() {
       }))
     })
   }
+
+  const handleLikeCard = (cardId) => {
+    return patchLikeCounterAPI(cardId)
+    .then(updatedCard => {
+      setCards(prevCards => {
+        prevCards.map(card => {
+          card.id === updatedCard.id ? updatedCard : card
+        });
+      });
+    })
+  };
+
     
   const handleSelectBoard = (board) => {
     updateSelectedBoard(board);
@@ -125,7 +143,8 @@ function App() {
           board={selectedBoard}
           cards={cards}
           onCreateCard={createCard}
-          onCardDelete={deleteCard}
+          onDeleteCard={deleteCard}
+          onLikeCard={handleLikeCard}
         />
       )}
     </div>
