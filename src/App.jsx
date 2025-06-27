@@ -91,11 +91,6 @@ function App() {
   const createCard = (boardId, newCardData) => {
     createCardApi(boardId, newCardData)
     .then(()=> getAllCards(boardId))
-    // .then(newCard => {
-    //   if (newCard){
-    //     setCards(prevCards => [...prevCards, newCard])
-    //   }
-    // });
   };
 
   const deleteCard = (cardId) => {
@@ -109,13 +104,13 @@ function App() {
 
   const handleLikeCard = (cardId) => {
     return patchLikeCounterAPI(cardId)
-    .then(updatedCard => {
-      setCards(prevCards => {
-        prevCards.map(card => {
-          card.id === updatedCard.id ? updatedCard : card
+      .then(updatedCard => {
+        setCards(prevCards => {
+          return prevCards.map(card =>
+            card.id === updatedCard.id ? updatedCard : card
+          );
         });
-      });
-    })
+      })
   };
 
     

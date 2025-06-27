@@ -6,7 +6,7 @@ const Card = ({id, cardMessage, likesCounter, cardColor, onDeleteCard, onLikeCar
 		<li className="card-item" style={{"--card-bg": cardColor}}>
 			<p className="card-item__message">{cardMessage}</p>
 			<div className="card-item__controls">
-				<button onClick={()=> onLikeCard}>Like</button>
+				<button onClick={()=> onLikeCard(id)}>Like</button>
 				<p>{likesCounter}♥️</p>
 				<button onClick={() => onDeleteCard(id)}>Delete</button>
 			</div>
