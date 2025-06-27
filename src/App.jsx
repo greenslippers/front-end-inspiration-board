@@ -31,7 +31,7 @@ const getCardsApi = (boardId) => {
 
 const createCardApi =  (boardId, newCardData) => {
   return axios.post(`${kBaseUrl}/boards/${boardId}/cards`, newCardData)
-  .then(response => convertCardFromApi(response.data[0]))git 
+  .then(response => convertCardFromApi(response.data[0]))
   .catch(error => console.error(error));
 }
 
