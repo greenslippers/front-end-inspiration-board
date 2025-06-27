@@ -29,7 +29,14 @@ const getCardsApi = (boardId) => {
     })
 }
 
+const createCardApi =  (boardId, newCardData) => {
+  return axios.post(`${kBaseUrl}/${boardId}/cards`, newCardData)
+  .then(response => convertCardFromApi(response.data[0]))
+  .catch(error => console.error(error));
+}
+
 const convertCardFromApi = ((apiCard) => {
+  if (!apiCard) return;
   const { board_id, card_color, card_id, likes_count, message } = apiCard;
   const newCard = {boardId: board_id, cardColor: card_color, id: card_id, likesCount: likes_count, message}
 
@@ -63,6 +70,16 @@ function App() {
       getAllCards(selectedBoard.id);
     }
   }, [selectedBoard]);
+
+  const createCard = (boardId, newCardData) => {
+    createCardApi(boardId, newCardData)
+    .then(()=> getAllCards(boardId))
+    // .then(newCard => {
+    //   if (newCard){
+    //     setCards(prevCards => [...prevCards, newCard])
+    //   }
+    // });
+  };
     
   const handleSelectBoard = (board) => {
     updateSelectedBoard(board);
@@ -93,6 +110,7 @@ function App() {
         <Board
           board={selectedBoard}
           cards={cards}
+          onCreateCard={createCard}
         />
       )}
     </div>

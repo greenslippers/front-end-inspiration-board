@@ -6,8 +6,13 @@ import CardForm from './CardForm';
 import FormPopUp from './FormPopUp';
 import './styles/Board.css';
 
-const Board = ({ board, cards }) => {
+const Board = ({ board, cards, onCreateCard }) => {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+
+  const handleCreateCard = (boardId, cardData) => {
+    onCreateCard(boardId, cardData)
+    setIsPopUpOpen(false)
+  }
 
   return (
     <div className="board">
@@ -15,7 +20,7 @@ const Board = ({ board, cards }) => {
       <p className="board__owner">Owner: {board.owner}</p>
       <button onClick={() => setIsPopUpOpen(true) }>➕ Add Card</button>
       <FormPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)}>
-        <CardForm/>
+        <CardForm onCreateCard={handleCreateCard} boardId={board.id} />
       </FormPopUp>
       <div className="board__cards-container">
         <CardList cards={cards}/>
@@ -30,6 +35,7 @@ Board.propTypes = {
     title: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
   }).isRequired,
+  onCreateCard: PropTypes.func.isRequired,
 };
 
 export default Board;

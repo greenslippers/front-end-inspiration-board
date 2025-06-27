@@ -6,7 +6,7 @@ const kCardFormData = {
   color: '#fff8a5',
 };
 
-const CardForm = () => {
+const CardForm = ({ onCreateCard, boardId }) => {
   const [cardFormData, setCardFormData] = useState(kCardFormData);
   const [messageError, setMessageError] = useState('');
   const [focused, setFocused] = useState(false);
@@ -42,10 +42,13 @@ const CardForm = () => {
       setFocused(true);
       return;
     }
-
-    // TODO: Add your create-card logic here
+    const apiCardData = {
+      message: cardFormData.message,
+      card_color: cardFormData.color,
+    };
+    
     console.log("Form submitted:", cardFormData);
-
+    onCreateCard(boardId, apiCardData);
     setCardFormData(kCardFormData);  // Reset form
     setFocused(false);
   };
