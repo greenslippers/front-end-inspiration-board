@@ -16,7 +16,7 @@ const BoardList = ({ boards, onSelectBoard }) => {
   return (
     <div className="board-list">
       <label htmlFor="board-select" className="board-list__label">
-        All Boards
+        Select a board:
       </label>
       <select 
         id="board-select"
@@ -24,7 +24,7 @@ const BoardList = ({ boards, onSelectBoard }) => {
         onChange={handleBoardChange}
         defaultValue=""
       >
-        <option value="" disabled>Choose a board...</option>
+        <option value="" disabled>All boards</option>
         {boards.map(board => (
           <option key={board.id} value={board.id}>
             {board.title}

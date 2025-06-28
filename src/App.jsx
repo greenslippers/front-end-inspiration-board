@@ -117,16 +117,21 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="title">Devspiration Boards</h1>
-      <div className="board-controls">
-        <BoardList 
-          boards={boards}
-          onSelectBoard={handleSelectBoard}
-        />
-        <BoardForm 
-          onCreateBoard={handleCreateBoard}
-        />
-      </div>
+      <header className="header">
+        <div className="header-content">
+          <h1 className="title">Devspiration</h1>
+          <p className="subtitle">A space where you can create boards for anything that inspires you and fill them with cards that have ideas, quotes, goals, or notes.</p>
+        </div>
+        <div className="board-controls">
+          <BoardList 
+            boards={boards}
+            onSelectBoard={handleSelectBoard}
+          />
+          <BoardForm
+            onCreateBoard={handleCreateBoard}
+          />
+        </div>
+      </header>
       {selectedBoard && (
         <Board
           board={selectedBoard}
