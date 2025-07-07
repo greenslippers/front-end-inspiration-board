@@ -104,6 +104,10 @@ function App() {
           onLikeCard={handleLikeCard}
         />
       )}
+
+      <footer className="footer">
+      Devspiration Team | ADA C23 | 2025
+      </footer>
     </div>
   );
 }
