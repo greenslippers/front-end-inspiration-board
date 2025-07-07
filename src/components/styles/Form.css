@@ -1,13 +1,12 @@
 .form-section {
   width: 85%;
   margin: 0 auto;
-  padding-bottom: 2rem;
 }
 
 .form-title {
   font-size: 1.4em;
   font-weight: bold;
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
   text-align: center;
 }
 
@@ -25,14 +24,13 @@
 .form-inputs__input {
   display: flex;
   flex-direction: column;
-  margin-bottom: 2.5em;
-  width: 100%;
+  margin-bottom: 1.2em;
 }
 
 .form-inputs__input label {
   font-weight: bold;
   margin-bottom: 0.85em;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
 .form-inputs__input input {
@@ -52,14 +50,28 @@
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
+input[type="color"] {
+  width: 4rem;
+  height: 2rem;
+  cursor: pointer;
+  padding: 0.1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+input[type="color"]:focus {
+  border: none;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
 .form-button {
   width: fit-content;
   margin: 0 auto;
 }
 
 .form-submit__button {
-  margin-top: 2em;
-  font-size: 1.1em;
+  margin-top: 1.5em;
+  font-size: 1em;
   border: 1px solid #a8a6a6;
   transition: all 0.5s ease-in-out;
 }
@@ -67,7 +79,6 @@
 .form-submit__button:hover {
   transform: scale(1.02);
   border: 1px solid #6c6a6a;
-  font-weight: 600;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
