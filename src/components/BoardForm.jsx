@@ -71,11 +71,11 @@ const BoardForm = ({ onCreateBoard }) => {
     <>
       <button onClick={() => setIsPopUpOpen(true)}>+ Create a new board</button>
       <FormPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)}>
-        <section className="board-form">
+        <section className="form-section">
           <h2 className="form-title">Create New Board</h2>
           <form onSubmit={submitBoardData}>
             <div className="form-inputs">
-              <div className="input-group">
+              <div className="form-inputs__input">
                 <label htmlFor="boardTitle">Board Title: </label>
                 <input
                   onChange={handleBoardFormChange}
@@ -88,7 +88,7 @@ const BoardForm = ({ onCreateBoard }) => {
                 {errors.title && <span className="error-message">{errors.title}</span>}
               </div>
               
-              <div className="input-group">
+              <div className="form-inputs__input">
                 <label htmlFor="boardOwner">Board made by: </label>
                 <input
                   onChange={handleBoardFormChange}
@@ -101,7 +101,7 @@ const BoardForm = ({ onCreateBoard }) => {
                 {errors.owner && <span className="error-message">{errors.owner}</span>}
               </div>
             </div>
-            <div>
+            <div className='form-button'>
               <button className="form-submit__button" type="submit">Create Board</button>
             </div>
           </form>

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import './styles/FormPopUp.css';
+import './styles/Form.css';
 
 const FormPopUp = ({ isOpen, onClose, children }) => {
 	if (!isOpen) return null;
@@ -8,7 +9,7 @@ const FormPopUp = ({ isOpen, onClose, children }) => {
     <div className="pop-up__overlay"
       onClick={onClose}>
       <div className="pop-up__content" onClick={(event) => event.stopPropagation()}>
-        <button className="pop-up__close" onClick={onClose}>❌</button>
+        <button className="pop-up__close" onClick={onClose}>x</button>
         {children}
       </div>
     </div>
