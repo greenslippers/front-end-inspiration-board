@@ -1,14 +1,19 @@
 .cardForm-preview__label {
   font-weight: bold;
+	margin-bottom: 0.85em;
+  font-size: 1.25em;
+  text-align: center;
 }
 
 .cardForm-preview__card {
-  width: 8em;
-  height: 8em;
+  width: 13em;
+  height: 13em;
   text-align: center;
   padding: 1.5em;
   margin: auto;
   overflow-y: scroll;
+  border: 1px solid #b6b6b6;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 .cardForm-preview__card p {
@@ -18,8 +23,8 @@
 }
 
 #cardColor {
-  width: 3rem;
+  width: 4rem;
   height: 2rem;
   cursor: pointer;
-  padding: 0.12rem;
+  padding: 0.1rem;
 }

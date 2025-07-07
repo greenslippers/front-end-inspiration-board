@@ -56,7 +56,7 @@ const CardForm = ({ onCreateCard, boardId }) => {
   const inputErrorClass = focused && messageError ? 'form-input__error' : '';
 
   return (
-    <section>
+    <section className='form-section'>
       <h2 className='form-title'>Add a New Card</h2>
       <form onSubmit={submitCardData}>
         <div className='form-inputs'>
@@ -79,7 +79,6 @@ const CardForm = ({ onCreateCard, boardId }) => {
           <div className='form-inputs__input'>
             <label htmlFor="cardColor">Card color: </label>
             <input
-              // className='cardForm-input__color'
               onChange={handleCardFormChange}
               type="color"
               name="color"
@@ -89,14 +88,14 @@ const CardForm = ({ onCreateCard, boardId }) => {
           </div>
 
           <div className='cardForm-preview'>
-            <p className='cardForm-preview__label'>Preview: </p>
+            <p className='cardForm-preview__label'>Preview</p>
             <div className='cardForm-preview__card' style={{ backgroundColor: cardFormData.color }}>
               <p>{cardFormData.message}</p>
             </div>
           </div>
         </div>
 
-        <div>
+        <div className='form-button'>
           <button
             className='form-submit__button'
             type="submit"
