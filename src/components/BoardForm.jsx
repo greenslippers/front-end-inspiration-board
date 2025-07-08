@@ -7,9 +7,11 @@ const kBoardFormData = {
   owner: '',
 };
 
-const BoardForm = ({ onCreateBoard }) => {
+// const BoardForm = ({ onCreateBoard }) => {
+  const BoardForm = ({ onCreateBoard, showFormInitially = false }) => {
   const [boardFormData, setBoardFormData] = useState(kBoardFormData);
-  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  // const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpen, setIsPopUpOpen] = useState(showFormInitially);
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -69,7 +71,10 @@ const BoardForm = ({ onCreateBoard }) => {
 
   return (
     <>
-      <button onClick={() => setIsPopUpOpen(true)}>+ Create a new board</button>
+      {/* <button onClick={() => setIsPopUpOpen(true)}>+ Create a new board</button> */}
+      {!showFormInitially && (
+        <button onClick={() => setIsPopUpOpen(true)}>+ Create a new board</button>
+      )}
       <FormPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)}>
         <section className="form-section">
           <h2 className="form-title">Create New Board</h2>

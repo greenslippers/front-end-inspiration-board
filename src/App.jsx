@@ -96,7 +96,9 @@ function App() {
           />
         </div>
       </header>
-      {!selectedBoard && <WelcomeBoard />}
+      {!selectedBoard && (
+        <WelcomeBoard onCreateBoard={handleCreateBoard} />
+      )}
 
       {selectedBoard && (
         <Board

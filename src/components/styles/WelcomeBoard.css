@@ -122,3 +122,27 @@
   font-size: 0.9rem;
 }
 
+.create-button-wrapper {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.create-board-button {
+  background-color: black;
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease;
+}
+
+.create-board-button:hover {
+  background-color: #222;
+}
+
