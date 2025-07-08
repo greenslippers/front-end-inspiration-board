@@ -5,6 +5,7 @@ import { getCardsApi, createCardApi, patchLikeCounterAPI, deleteCardApi } from '
 import BoardList from './components/BoardList';
 import BoardForm from './components/BoardForm';
 import Board from './components/Board';
+import WelcomeBoard from './components/WelcomeBoard';
 
 import './App.css';
 
@@ -95,6 +96,8 @@ function App() {
           />
         </div>
       </header>
+      {!selectedBoard && <WelcomeBoard />}
+
       {selectedBoard && (
         <Board
           board={selectedBoard}
