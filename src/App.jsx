@@ -12,6 +12,7 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoard, updateSelectedBoard] = useState(null);
   const [cards, setCards] = useState([]);
+  const [sortCardsBy, setSortCardsBy] = useState('id');
 
   // =========== Side Effects ========
   useEffect(() => {
@@ -77,6 +78,20 @@ function App() {
       })
   };
 
+  const handleSortOptions = (sortBy) => {
+    setSortCardsBy(sortBy);
+  }
+  
+  // =========== Sorting Cards ===========
+  const sortedCards = [...cards];
+  if (sortCardsBy === 'id') {
+    sortedCards.sort((a, b) => a.id - b.id);
+  } else if (sortCardsBy == 'alphabetical') {
+    sortedCards.sort((a, b) => a.message.localeCompare(b.message));
+  } else if (sortCardsBy == 'likes') {
+    sortedCards.sort((a, b) => b.likesCount - a.likesCount);
+  }
+
   // ================= Render ===================
   return (
     <div className="app">
@@ -98,10 +113,12 @@ function App() {
       {selectedBoard && (
         <Board
           board={selectedBoard}
-          cards={cards}
+          cards={sortedCards}
           onCreateCard={handleCreateCard}
           onDeleteCard={handleDeleteCard}
           onLikeCard={handleLikeCard}
+          onSortCards={handleSortOptions}
+          sortCardsBy={sortCardsBy}
         />
       )}
     </div>

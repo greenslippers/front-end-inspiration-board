@@ -17,6 +17,7 @@
 .board__header-right {
     display: flex;
     align-items: center;
+    gap: 1rem
 }
 .board__title {
     color: black;
@@ -26,6 +27,13 @@
 .board__owner {
     color: black;
     margin: 0 1rem 0 0;
+}
+.board__sort-select {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .card__list {
