@@ -16,9 +16,15 @@ const Board = ({ board, cards, onCreateCard, onDeleteCard, onLikeCard }) => {
 
   return (
     <div className="board">
-      <h1 className="board__title">{board.title}</h1>
-      <p className="board__owner">Owner: {board.owner}</p>
-      <button onClick={() => setIsPopUpOpen(true) }>+ Add Card</button>
+      <div className="board__header">
+        <div className="board__header-left">
+          <h1 className="board__title">{board.title}</h1>
+        </div>
+        <div className="board__header-right">
+          <p className="board__owner">Board made by <strong>{board.owner}</strong></p>
+          <button onClick={() => setIsPopUpOpen(true) }>+ Add new card</button>
+        </div>
+      </div>
       <FormPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)}>
         <CardForm onCreateCard={handleCreateCard} boardId={board.id} />
       </FormPopUp>
