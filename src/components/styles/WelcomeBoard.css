@@ -1,7 +1,7 @@
 .welcome-board {
   background-color: #f0f0f0;
-  margin: 2rem;           /* 2rem on all four sides */
-  padding: 6rem 2rem 10rem 2rem;
+  margin: 1rem 2rem;           /* 2rem on all four sides */
+  padding: 4rem 2rem 3rem 2rem;
   border-radius: 12px;
 }
 
@@ -32,27 +32,13 @@
   padding: 0 !important; 
 }
 
-/* .card-item {
+.welcome-card__item {
   background-color: var(--card-bg, #fff8a5);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
               rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   color: black;
   padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  width: 100%;
-  max-width: 280px;
-  flex: 1 1 250px; 
-} */
-
-.card-item {
-  background-color: var(--card-bg, #fff8a5);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-              rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-  color: black;
-  padding: 1.5rem;
+  margin-top: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -62,20 +48,12 @@
   max-width: 280px;
   flex: 1 1 250px;
   height: 350px;     /* or any size you prefer */
-  /* box-sizing: border-box; */
 }
 
 .card-item__message {
   white-space: pre-line;
   margin-bottom: 1rem;
 }
-
-/* .card-item__controls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 1rem;
-} */
 
 .card-item__bottom {
   display: flex;
@@ -124,25 +102,25 @@
 
 .create-button-wrapper {
   text-align: center;
-  margin-top: 3rem;
 }
 
 .create-board-button {
-  background-color: black;
-  color: white;
-  font-size: 1.2rem;
-  padding: 1rem 2rem;
+  background-color: #474646;
+  color: rgb(249, 249, 249);
+  border: 1px solid white;
+  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
   border-radius: 20px;
-  border: none;
+  margin-top: 3rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: background 0.2s ease;
+  transition: all 0.5s ease-in-out;
 }
 
 .create-board-button:hover {
   background-color: #222;
+  color: white;
 }
-
