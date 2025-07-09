@@ -36,7 +36,7 @@ const welcomeCards = [
   },
   {
     id: 4,
-    text: `Confidence is what follows effort — not what leads it.`,
+    text: `Let the code run free, if it needs to be debugged, it will come back.`,
     author: "Collette",
     avatar: colletteImg,
     color: "#fff9c4",
