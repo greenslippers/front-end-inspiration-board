@@ -75,22 +75,24 @@ const CardForm = ({ onCreateCard, boardId }) => {
               <span className='form-error__msg'>{messageError}</span>
             )}
           </div>
+          
+          <div className='cardForm-color-preview__div'>
+            <div className='form-inputs__input'>
+              <label htmlFor="cardColor">Card color</label>
+              <input
+                onChange={handleCardFormChange}
+                type="color"
+                name="color"
+                id="cardColor"
+                value={cardFormData.color}
+              />
+            </div>
 
-          <div className='form-inputs__input'>
-            <label htmlFor="cardColor">Card color: </label>
-            <input
-              onChange={handleCardFormChange}
-              type="color"
-              name="color"
-              id="cardColor"
-              value={cardFormData.color}
-            />
-          </div>
-
-          <div className='cardForm-preview'>
-            <p className='cardForm-preview__label'>Preview</p>
-            <div className='cardForm-preview__card' style={{ backgroundColor: cardFormData.color }}>
-              <p>{cardFormData.message}</p>
+            <div className='cardForm-preview'>
+              <p className='cardForm-preview__label'>Preview</p>
+              <div className='cardForm-preview__card' style={{ backgroundColor: cardFormData.color }}>
+                <p>{cardFormData.message}</p>
+              </div>
             </div>
           </div>
         </div>

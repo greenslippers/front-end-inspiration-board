@@ -1,7 +1,14 @@
+.cardForm-color-preview__div {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em;
+  padding: 0 1em;
+}
+
 .cardForm-preview__label {
   font-weight: bold;
 	margin-bottom: 0.85em;
-  font-size: 1.25em;
+  font-size: 1em;
   text-align: center;
 }
 
@@ -20,11 +27,4 @@
   margin-top: 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
-}
-
-#cardColor {
-  width: 4rem;
-  height: 2rem;
-  cursor: pointer;
-  padding: 0.1rem;
 }
