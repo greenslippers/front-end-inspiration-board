@@ -20,7 +20,7 @@ const welcomeCards = [
   },
   {
     id: 2,
-    text: `Let your hands teach your heart how capable you are.`,
+    text: `Stress doesn’t sharpen your work or speed it up—it holds you back. Steady your focus and own the process.`,
     author: "Natasha",
     avatar: natashaImg,
     color: "#f28b82",
