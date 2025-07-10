@@ -11,7 +11,7 @@ const Card = ({id, cardMessage, likesCounter, cardColor, onDeleteCard, onLikeCar
 			<p className="card-item__message">{cardMessage}</p>
 			<div className="card-item__controls">
 				<button onClick={()=> onLikeCard(id)}><FontAwesomeIcon icon={faThumbsUp} style={{color: "#3a3a3a",}} /> 1</button>
-				<p>{likesCounter} <FontAwesomeIcon icon={faHeart} size="lg" style={{color: "#c40e17",}} /></p>
+				<p>{likesCounter} <FontAwesomeIcon icon={faHeart} size="lg" style={{color: "#8b0202",}} /></p>
 				<button onClick={() => onDeleteCard(id)}><FontAwesomeIcon icon={faTrashCan} style={{color: "#3a3a3a",}} /></button>
 			</div>
 		</li>
