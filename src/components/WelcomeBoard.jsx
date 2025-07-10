@@ -8,6 +8,10 @@ import natashaImg from '../assets/images/Natasha.png';
 import janeImg from '../assets/images/Jane.png';
 import colletteImg from '../assets/images/Collette.jpeg';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart, faTrashCan} from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp } from '@fortawesome/free-regular-svg-icons';
+
 const welcomeCards = [
   {
     id: 1,
@@ -67,9 +71,9 @@ export default function WelcomeBoard({ onCreateBoard, isPopUpOpen, setIsPopUpOpe
               <p className="card-item__message">{card.text}</p>
               <div className="card-item__bottom">
                 <div className="card-item__controls">
-                  <button disabled={true}>Like</button>
-                  <p>{card.hearts}❤️</p>
-                  <button disabled={true}>Delete</button>
+                  <button disabled={true}><FontAwesomeIcon icon={faThumbsUp} style={{color: "#3a3a3a",}} /> 1</button>
+                  <p>{card.hearts} <FontAwesomeIcon icon={faHeart} size="lg" style={{color: "#8b0202",}} /></p>
+                  <button disabled={true}><FontAwesomeIcon icon={faTrashCan} style={{color: "#3a3a3a",}} /></button>
                 </div>
                 <div className="welcome-card__footer">
                   <img
