@@ -1,6 +1,8 @@
-import { useState } from 'react';
 import './styles/WelcomeBoard.css';
+
 import BoardForm from './BoardForm';
+import FormPopUp from './FormPopUp';
+
 import linaImg from '../assets/images/Lina.png';
 import natashaImg from '../assets/images/Natasha.png';
 import janeImg from '../assets/images/Jane.png';
@@ -45,50 +47,59 @@ const welcomeCards = [
   }
 ];
 
-export default function WelcomeBoard({ onCreateBoard }) {
-  const [showForm, setShowForm] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowForm(true);
-  };
-
+export default function WelcomeBoard({ onCreateBoard, isPopUpOpen, setIsPopUpOpen }) {
   const handleFormSubmit = (boardData) => {
     onCreateBoard(boardData);
-    setShowForm(false); // hide form after creating
   };
 
   return (
-    <>
-      {/* Grey welcome board */}
-      <section className="welcome-board">
-        <div className="welcome-board__container">
-          <h2 className="welcome-title">Welcome from the Team!</h2>
-          <ul className="card-grid">
-            {welcomeCards.map(card => (
-              <li className="welcome-card__item" key={card.id} style={{ "--card-bg": card.color }}>
-                <p className="card-item__message">{card.text}</p>
-                <div className="card-item__bottom">
-                  <div className="card-item__controls">
-                    <button>Like</button>
-                      <p>{card.hearts}❤️</p>  
-                    <button>Delete</button>
-                  </div>
-                  <div className="welcome-card__footer">
-                    <img src={card.avatar} alt={`${card.author} avatar`} className="author-avatar" />
-                    <span className="welcome-card__author">{card.author}</span>
-                  </div>
+    <section className="welcome-board">
+      <div className="welcome-board__container">
+        <h2 className="welcome-title">Welcome from the Team!</h2>
+
+        <ul className="card-grid">
+          {welcomeCards.map((card) => (
+            <li
+              key={card.id}
+              className="welcome-card__item"
+              style={{ "--card-bg": card.color }}
+            >
+              <p className="card-item__message">{card.text}</p>
+              <div className="card-item__bottom">
+                <div className="card-item__controls">
+                  <button disabled={true}>Like</button>
+                  <p>{card.hearts}❤️</p>
+                  <button disabled={true}>Delete</button>
                 </div>
-              </li>
-            ))}
-          </ul>
-          <div className="create-button-wrapper">
-            <button className="create-board-button" onClick={handleButtonClick}>
-              ✨ Create your first Inspiration board
-            </button>
-            {showForm && <BoardForm onCreateBoard={handleFormSubmit} showFormInitially={true} />}
-          </div>
+                <div className="welcome-card__footer">
+                  <img
+                    src={card.avatar}
+                    alt={`${card.author} avatar`}
+                    className="author-avatar"
+                  />
+                  <span className="welcome-card__author">{card.author}</span>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <div className="create-button-wrapper">
+          <button
+            className="create-board-button"
+            onClick={() => setIsPopUpOpen(true)}
+          >
+            ✨ Create your first Inspiration board
+          </button>
+
+          <FormPopUp
+            isOpen={isPopUpOpen}
+            onClose={() => setIsPopUpOpen(false)}
+          >
+            <BoardForm onCreateBoard={handleFormSubmit} />
+          </FormPopUp>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
