@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import { getBoardsApi, createBoardApi } from './api/boards';
 import { getCardsApi, createCardApi, patchLikeCounterAPI, deleteCardApi } from './api/cards';
 
@@ -6,14 +7,19 @@ import BoardList from './components/BoardList';
 import BoardForm from './components/BoardForm';
 import Board from './components/Board';
 import WelcomeBoard from './components/WelcomeBoard';
+import FormPopUp from './components/FormPopUp';
 
 import './App.css';
 
 function App() {
+  // =========== State ========
   const [boards, setBoards] = useState([]);
   const [selectedBoard, updateSelectedBoard] = useState(null);
   const [cards, setCards] = useState([]);
   const [sortCardsBy, setSortCardsBy] = useState('id');
+  const [isBoardPopUpOpen, setIsBoardPopUpOpen] = useState(false);
+const [isCardPopUpOpen, setIsCardPopUpOpen] = useState(false);
+
 
   // =========== Side Effects ========
   useEffect(() => {
@@ -29,19 +35,20 @@ function App() {
   // ======= Boards: Fetch, Create, Select Board ======= 
   const handleGetAllBoards = () => {
     return getBoardsApi()
-    .then(response => {
-      setBoards(response)
-    });
+      .then(response => {
+        setBoards(response)
+      });
   };
   
   const handleCreateBoard = (boardData) => {
     createBoardApi(boardData)
-    .then(newBoard => {
-      if (newBoard) {
-        updateSelectedBoard(newBoard);
-      }
-      return handleGetAllBoards();
-    });
+      .then(newBoard => {
+        if (newBoard) {
+          updateSelectedBoard(newBoard);
+          setIsBoardPopUpOpen(false)
+        }
+        return handleGetAllBoards();
+      });
   };
   
   const handleSelectBoard = (board) => {
@@ -51,20 +58,23 @@ function App() {
   // ======= Cards: Fetch, Create, Like, Delete =======
   const handleGetAllCards = (boardId) => {
     return getCardsApi(boardId)
-    .then(response => setCards(response))
+      .then(response => setCards(response))
   }
 
   const handleCreateCard = (boardId, newCardData) => {
     createCardApi(boardId, newCardData)
-    .then(()=> handleGetAllCards(boardId))
+      .then(()=> {
+        handleGetAllCards(boardId)
+        setIsCardPopUpOpen(false)
+      })
   };
 
   const handleDeleteCard = (cardId) => {
     return deleteCardApi(cardId)
-    .then(()=> {
-      setCards(cards => cards.filter(card => {
-        return card.id !== cardId
-      }))
+      .then(()=> {
+        setCards(cards => cards.filter(card => {
+          return card.id !== cardId
+        }))
     })
   }
 
@@ -83,7 +93,7 @@ function App() {
     setSortCardsBy(sortBy);
   }
   
-  // =========== Sorting Cards ===========
+  // =========== Card Sorting ===========
   const sortedCards = [...cards];
   if (sortCardsBy === 'id') {
     sortedCards.sort((a, b) => a.id - b.id);
@@ -98,7 +108,7 @@ function App() {
     <div className="app">
       <header className="header">
         <div className="header-content">
-          <h1 className="title">Devspiration</h1>
+          <h1 className="title" onClick={() => updateSelectedBoard(null)}>Devspiration</h1>
           <p className="subtitle">A space where you can create boards for anything that inspires you and fill them with cards that have ideas, quotes, goals, or notes.</p>
         </div>
         <div className="board-controls">
@@ -106,13 +116,18 @@ function App() {
             boards={boards}
             onSelectBoard={handleSelectBoard}
           />
-          <BoardForm
-            onCreateBoard={handleCreateBoard}
-          />
+          <button onClick={() => setIsBoardPopUpOpen(true) }>+ Create new board</button>
+          <FormPopUp isOpen={isBoardPopUpOpen} onClose={() => setIsBoardPopUpOpen(false)}>
+            <BoardForm onCreateBoard={handleCreateBoard} />
+          </FormPopUp>
         </div>
       </header>
       {!selectedBoard && (
-        <WelcomeBoard onCreateBoard={handleCreateBoard} />
+        <WelcomeBoard
+          onCreateBoard={handleCreateBoard}
+          isPopUpOpen={isBoardPopUpOpen}
+          setIsPopUpOpen={setIsBoardPopUpOpen}
+        />
       )}
 
       {selectedBoard && (
@@ -124,6 +139,8 @@ function App() {
           onLikeCard={handleLikeCard}
           onSortCards={handleSortOptions}
           sortCardsBy={sortCardsBy}
+          isPopUpOpen={isCardPopUpOpen}
+          setIsPopUpOpen={setIsCardPopUpOpen}
         />
       )}
 
