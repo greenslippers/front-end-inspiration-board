@@ -7,16 +7,14 @@ const kBoardFormData = {
   owner: '',
 };
 
-// const BoardForm = ({ onCreateBoard }) => {
-  const BoardForm = ({ onCreateBoard, showFormInitially = false }) => {
+const BoardForm = ({ onCreateBoard }) => {
   const [boardFormData, setBoardFormData] = useState(kBoardFormData);
-  // const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-  const [isPopUpOpen, setIsPopUpOpen] = useState(showFormInitially);
+  // const [isPopUpOpen, setIsPopUpOpen] = useState(showFormInitially);
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!boardFormData.title.trim()) {
       newErrors.title = 'Board title is required';
     } else if (boardFormData.title.trim().length < 2) {
@@ -24,7 +22,7 @@ const kBoardFormData = {
     } else if (boardFormData.title.trim().length > 50) {
       newErrors.title = 'Board title must be less than 50 characters';
     }
-    
+
     if (!boardFormData.owner.trim()) {
       newErrors.owner = 'Owner name is required';
     } else if (boardFormData.owner.trim().length < 2) {
@@ -32,19 +30,19 @@ const kBoardFormData = {
     } else if (boardFormData.owner.trim().length > 30) {
       newErrors.owner = 'Owner name must be less than 30 characters';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const submitBoardData = (event) => {
     event.preventDefault();
-    
+
     if (validateForm()) {
       onCreateBoard(boardFormData);
       setBoardFormData(kBoardFormData);
       setErrors({});
-      setIsPopUpOpen(false);
+      // setIsPopUpOpen(false);
     }
   };
 
@@ -58,7 +56,7 @@ const kBoardFormData = {
         [inputName]: inputValue
       };
     });
-    
+
     // Clear error for this field when user starts typing
     if (errors[inputName]) {
       setErrors(prevErrors => {
@@ -71,11 +69,10 @@ const kBoardFormData = {
 
   return (
     <>
-      {/* <button onClick={() => setIsPopUpOpen(true)}>+ Create a new board</button> */}
-      {!showFormInitially && (
+      {/* {!showFormInitially && (
         <button onClick={() => setIsPopUpOpen(true)}>+ Create a new board</button>
       )}
-      <FormPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)}>
+      <FormPopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)}> */}
         <section className="form-section">
           <h2 className="form-title">Create New Board</h2>
           <form onSubmit={submitBoardData}>
@@ -92,7 +89,7 @@ const kBoardFormData = {
                 />
                 {errors.title && <span className="error-message">{errors.title}</span>}
               </div>
-              
+
               <div className="form-inputs__input">
                 <label htmlFor="boardOwner">Board made by: </label>
                 <input
@@ -111,7 +108,7 @@ const kBoardFormData = {
             </div>
           </form>
         </section>
-      </FormPopUp>
+      {/* </FormPopUp> */}
     </>
   );
 };
