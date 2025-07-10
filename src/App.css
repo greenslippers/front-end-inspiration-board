@@ -3,12 +3,6 @@ body, #root {
   color-scheme: light;
 }
 
-/* .app {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-} */
-
 .app {
   display: flex;
   flex-direction: column;
@@ -39,6 +33,7 @@ body, #root {
   font-weight: bold;
   margin: 0 0 0.5rem 0;
   letter-spacing: -.075rem;
+  cursor:pointer;
 }
 
 .subtitle {
