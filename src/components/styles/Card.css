@@ -1,33 +1,61 @@
 .card-item {
-    background-color: var(--card-bg, #fff8a5);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    color: black;
-    min-width: 200px;
-    max-width: 280px;
-    width: 100%;
-    min-height: 200px;
-    height: 18em;
-    padding: 1.5rem;
-    margin-top: 1rem;
+  background-color: var(--card-bg, #fff8a5);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  color: black;
+  min-width: 200px;
+  max-width: 280px;
+  width: 100%;
+  min-height: 200px;
+  height: 18em;
+  padding: 1.5rem;
+  margin-top: 1rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-item__message {
-    padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .card-item__controls {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-top: .5px solid rgb(58, 58, 58);
+  padding-top: 1rem;
 }
 
-.card-item__controls button{
-    color: black;
-    background-color: var(--card-bg, #fff8a5);
-    padding: 0.5em 1em;
+.card-item__controls p {
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.card-item__controls p:hover {
+  transform: scale(1.1);
+}
+
+
+.card-item__controls button {
+  color: black;
+  background-color: var(--card-bg, #fff8a5);
+  padding: 0.5em 1em;
+  color: grey;
+}
+
+.card-item__controls button .fa-thumbs-up,
+.card-item__controls button .fa-trash-can {
+  transition: color 0.2s, transform 0.2s;
+}
+
+.card-item__controls button:hover .fa-thumbs-up {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.card-item__controls button:hover .fa-trash-can {
+  background-color: transparent;
+  transform: scale(1.2) rotate(5deg);
 }
